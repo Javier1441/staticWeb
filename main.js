@@ -1,44 +1,61 @@
-var users = [];
+//Para declarar un array
+var particiapants = [];
 
-const showPaticipants = (data) => {
-    let aux = [];
+//Para declarar una funcion
+const showParticipants = (data) => {
+    //let para definir una variable
+    let arrayAuxiliar = [];
 
     data.forEach(element => {
-        
-        aux.push(element.name)
+        arrayAuxiliar.push(element.name);
     });
 
-    $("#users").text("Participant: " + aux);  
-    //$("#users").html("<strong>Participants: </strong>" + aux); 
+    $("#users").text("Participants: " + arrayAuxiliar);
+    $("#users").html("<string>Participants: </string>" + arrayAuxiliar);
 
-};
-
-const getWiner = (data) => {
-
-    const aleat = Math.floor(Math.random() * data.lenght());
-
-    alert("hey")
-
-    //$("#selected").html("<strong>seleccionado: </strong>" + data[aleat].name());
 }
 
-//Cuando la pagina haya cargado todos los documentos empieza a ejecutar
+
+const getWinner = (data) => {
+
+    const aleat = Math.floor(Math.random() * data.length);
+    $("#selected").html("<strong>Seleccionado: </strong>" + data[aleat].name);
+
+}
+
+
 $(document).ready(function () {
+
+
+    //jsonplaceholder.typicode.com/users
+
     $.ajax({
+
         type: "GET",
         url: "https://jsonplaceholder.typicode.com/users",
-        contentType: "aplication/json",
+        contentType: "application/json",
         success: function (response) {
-            users = response;
-            showPaticipants(users);
-        },
-        error: function(error){
+
+            particiapants = response;
+
+            showParticipants(particiapants);
+
+
+        }, error: function (error) {
             console.log(error);
             alert(error);
         }
+
+    });
+
+    $(".btn").click(function () {
+
+        getWinner(particiapants);
+
     });
 
 
 
 });
+
 
