@@ -3,15 +3,24 @@ var users = [];
 const showPaticipants = (data) => {
     let aux = [];
 
-    data.array.forEach(element => {
+    data.forEach(element => {
         
-        aux.push(data.element)
+        aux.push(element.name)
     });
 
-    //$("#users").text("Participant: " + aux);  
-    $("#users").html("<strong>Participants: </strong>" + aux); 
+    $("#users").text("Participant: " + aux);  
+    //$("#users").html("<strong>Participants: </strong>" + aux); 
 
 };
+
+const getWiner = (data) => {
+
+    const aleat = Math.floor(Math.random() * data.lenght());
+
+    alert("hey")
+
+    //$("#selected").html("<strong>seleccionado: </strong>" + data[aleat].name());
+}
 
 //Cuando la pagina haya cargado todos los documentos empieza a ejecutar
 $(document).ready(function () {
@@ -32,5 +41,4 @@ $(document).ready(function () {
 
 
 });
-
 
