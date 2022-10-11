@@ -1,5 +1,17 @@
-
 var users = [];
+
+const showPaticipants = (data) => {
+    let aux = [];
+
+    data.array.forEach(element => {
+        
+        aux.push(data.element)
+    });
+
+    //$("#users").text("Participant: " + aux);  
+    $("#users").html("<strong>Participants: </strong>" + aux); 
+
+};
 
 //Cuando la pagina haya cargado todos los documentos empieza a ejecutar
 $(document).ready(function () {
